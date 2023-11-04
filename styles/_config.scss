@@ -1,0 +1,28 @@
+//! Variables colors
+$c-btn-primary: #41b88375;
+$c-btn-secundary: #141414;
+$c-light: #ffffff;
+$c-dark: #000000;
+$c-bg-primary: #233329;
+$c-bg-secundary: #41b883;
+$c-bg-output: #222222;
+$c-text-output: rgba(255, 255, 255, 0.75);
+
+//! Reset CSS
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//! Config BG Color and font
+
+body,
+button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+body {
+  background: linear-gradient(to right, $c-bg-primary, $c-bg-secundary);
+}

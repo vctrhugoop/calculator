@@ -1,0 +1,59 @@
+@use 'config';
+
+.grid-container {
+  min-height: 100vh;
+
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(4, 6.25rem);
+  grid-template-rows: minmax(7.5rem, auto) repeat(5, 6.25rem);
+
+  > button {
+    cursor: pointer;
+    font-size: 2rem;
+
+    border: 0;
+    outline: none;
+
+    background-color: config.$c-btn-secundary;
+    color: config.$c-light;
+
+    &:hover {
+      background-color: config.$c-light;
+      color: config.$c-dark;
+    }
+  }
+
+  > .operator {
+    background-color: config.$c-btn-primary;
+  }
+
+  > .span-two {
+    grid-column: span 2;
+  }
+
+  > .output {
+    grid-column: 1 / -1;
+    background-color: config.$c-bg-output;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+
+    padding: 0.625rem;
+
+    word-wrap: break-word;
+    word-break: break-all;
+
+    > .previous-operand {
+      color: config.$c-text-output;
+      font-size: 1.5rem;
+    }
+    > .current-operand {
+      color: config.$c-light;
+      font-size: 2.5rem;
+    }
+  }
+}
