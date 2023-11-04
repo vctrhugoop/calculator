@@ -1,7 +1,7 @@
-const numberButtons = document.querySelectorAll('[date-number]');
-const operationButtons = document.querySelectorAll('[date-operator]');
-const equalsButtons = document.querySelector('[date-equals]');
-const deleteButtons = document.querySelector('[date-delete]');
+const numberButtons = document.querySelectorAll('[data-number]');
+const operationButtons = document.querySelectorAll('[data-operator]');
+const equalsButtons = document.querySelector('[data-equals]');
+const deleteButtons = document.querySelector('[data-delete]');
 const allClearButton = document.querySelector('[data-all-clear]');
 const previousOperandTextElement = document.querySelector(
   '[data-previous-operand]'
@@ -14,6 +14,12 @@ class Calculator {
   constructor(previousOperandTextElement, currentOperandTextElement) {
     this.previousOperandTextElement = previousOperandTextElement;
     this.currentOperandTextElement = currentOperandTextElement;
+    this.clear();
+  }
+
+  appendNumber(number) {
+    if (this.currentOperand.includes('.') && number === '.') return;
+    this.currentOperand = `${this.currentOperand}${number.toString()}`;
   }
 
   clear() {
@@ -32,6 +38,13 @@ const calculator = new Calculator(
   previousOperandTextElement,
   currentOperandTextElement
 );
+
+for (const numberButton of numberButtons) {
+  numberButton.addEventListener('click', () => {
+    calculator.appendNumber(numberButton.innerText);
+    calculator.updateDisplay();
+  });
+}
 
 allClearButton.addEventListener('click', () => {
   calculator.clear();
